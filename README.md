@@ -9,11 +9,11 @@ NodeJS version: ```12.16.1``` or above
 
 ### Run the tests remotely using GitHub Actions
 
-- CI workflow in case of push or PR --> ```./.github/workflows/ci.yaml```
+- CI workflow in case of PR --> ```./.github/workflows/ci.yaml```
 - Manual Workflow --> ```./.github/workflows/manual.yaml```
 - Scheduled Workflow --> ```./.github/workflows/scheduled.yaml```
 
-### How to run the tests locally
+### Run the tests locally
 Location of the tests: ```./test/specs/```
 
 - clone the repository
