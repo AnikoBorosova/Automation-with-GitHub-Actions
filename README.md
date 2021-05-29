@@ -8,6 +8,7 @@ OS used: Linux/Ubuntu
 NodeJS version: ```12.16.1``` or above
 
 ### Run the tests remotely using GitHub Actions
+Find the workflows here: https://github.com/AnikoBorosova/Automation-with-GitHub-Actions/actions
 
 - CI workflow in case of PR --> ```./.github/workflows/ci.yaml```
 - Manual Workflow --> ```./.github/workflows/manual.yaml```
