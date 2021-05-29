@@ -1,7 +1,7 @@
 name: Scheduled workflow
 on:
   schedule:
-  - cron: "0 17 * * *"
+  - cron: "10 15 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
