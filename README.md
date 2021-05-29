@@ -1,18 +1,12 @@
 # Automation-with-GitHub-Actions
 
-### System Requirements:
-Browser used: Google Chrome (v90.0.4430.212), Firefox Nightly (v90.0a1)
-
-OS used: Linux/Ubuntu
-
-NodeJS version: ```12.16.1``` or above
-
 ### Run the tests remotely using GitHub Actions
 Find the workflows here: https://github.com/AnikoBorosova/Automation-with-GitHub-Actions/actions
 
 - CI workflow in case of PR --> ```./.github/workflows/ci.yaml```
 - Manual Workflow --> ```./.github/workflows/manual.yaml```
 - Scheduled Workflow --> ```./.github/workflows/scheduled.yaml```
+
 
 ### Run the tests locally
 Location of the tests: ```./test/specs/```
@@ -21,6 +15,15 @@ Location of the tests: ```./test/specs/```
 - make sure you have the latest stable Chrome version (v90.0.4430.212) and latest Firefox Nightly version (v90.0a1)
 - do ```npm install```
 - start the tests with the command: ```npm run testLocal```
+
+
+### System Requirements
+Browser used: Google Chrome (v90.0.4430.212), Firefox Nightly (v90.0a1)
+
+OS used: Linux/Ubuntu
+
+NodeJS version: ```12.16.1``` or above
+
 
 ### Test scenarios
 Find the scenarios in ```./test/specs/```
