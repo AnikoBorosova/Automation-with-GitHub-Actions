@@ -52,23 +52,32 @@ exports.config = {
 	// Sauce Labs platform configurator - a great tool to configure your capabilities:
 	// https://docs.saucelabs.com/reference/platforms-configurator
 	//
-	capabilities: [{
-
-		// maxInstances can get overwritten per capability. So if you have an in-house Selenium
-		// grid with only 5 firefox instances available you can make sure that not more than
-		// 5 instances get started at a time.
-		maxInstances: 5,
-		//
-		browserName: 'chrome',
-		acceptInsecureCerts: true,
-		'goog:chromeOptions': {
-			args: ['--headless']
+	capabilities: [
+		{
+			// maxInstances can get overwritten per capability. So if you have an in-house Selenium
+			// grid with only 5 firefox instances available you can make sure that not more than
+			// 5 instances get started at a time.
+			maxInstances: 5,
+			//
+			browserName: 'chrome',
+			acceptInsecureCerts: true,
+			'goog:chromeOptions': {
+				args: ['--headless']
+			},
+			// If outputDir is provided WebdriverIO can capture driver session logs
+			// it is possible to configure which logTypes to include/exclude.
+			// excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+			// excludeDriverLogs: ['bugreport', 'server'],
 		},
-		// If outputDir is provided WebdriverIO can capture driver session logs
-		// it is possible to configure which logTypes to include/exclude.
-		// excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-		// excludeDriverLogs: ['bugreport', 'server'],
-	}],
+		{
+			maxInstances: 2,
+			browserName: 'firefox',
+			"moz:firefoxOptions": {
+				//flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
+				args: ['-headless']
+			}
+		}
+	],
 	//
 	// ===================
 	// Test Configurations
@@ -116,8 +125,8 @@ exports.config = {
 	// Services take over a specific job you don't want to take care of. They enhance
 	// your test setup with almost no effort. Unlike plugins, they don't add new
 	// commands. Instead, they hook themselves up into the test process.
-	services: ['selenium-standalone', 'firefox-profile'],
-	/*
+	services: ['selenium-standalone', 'firefox-profile', 'docker'],
+
 	dockerOptions: {
 		image: 'selenium/standalone-chrome:3.141.59-20200719',
 		healthCheck: 'http://localhost:4444',
@@ -126,7 +135,6 @@ exports.config = {
 			shmSize: '2g'
 		}
 	},
-	*/
 	// Framework you want to run your specs with.
 	// The following are supported: Mocha, Jasmine, and Cucumber
 	// see also: https://webdriver.io/docs/frameworks
