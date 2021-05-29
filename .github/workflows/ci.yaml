@@ -9,7 +9,7 @@ jobs:
       - name: Setup
         run: npm install
       - name: Test
-        run: npm run "./node_modules/.bin/wdio ./wdio.conf.js"
+        run: npm run testLocal
       - name: Upload Logs
         uses: actions/upload-artifact@v2
         with:
