@@ -1,6 +1,8 @@
-name: CI
+name: Scheduled workflow
 
-on: [pull_request]
+on:
+  schedule:
+  - cron: "0 8 * * 1"
 
 jobs:
   build:

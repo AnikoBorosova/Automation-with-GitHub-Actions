@@ -1,6 +1,7 @@
-name: CI
+name: Manual workflow
 
-on: [pull_request]
+on:
+  workflow_dispatch:
 
 jobs:
   build:
