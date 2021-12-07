@@ -1,3 +1,6 @@
+const path = require('path');
+const fs = require('fs');
+
 exports.config = {
 	//
 	// ====================
@@ -68,7 +71,8 @@ exports.config = {
 			// it is possible to configure which logTypes to include/exclude.
 			// excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
 			// excludeDriverLogs: ['bugreport', 'server'],
-		},
+		}
+		/*
 		{
 			maxInstances: 2,
 			browserName: 'firefox',
@@ -77,6 +81,7 @@ exports.config = {
 				args: ['-headless']
 			}
 		}
+		*/
 	],
 	//
 	// ===================
@@ -125,8 +130,8 @@ exports.config = {
 	// Services take over a specific job you don't want to take care of. They enhance
 	// your test setup with almost no effort. Unlike plugins, they don't add new
 	// commands. Instead, they hook themselves up into the test process.
-	services: ['selenium-standalone', 'firefox-profile', 'docker'],
-
+	services: ['selenium-standalone'],
+	/*
 	dockerOptions: {
 		image: 'selenium/standalone-chrome:3.141.59-20200719',
 		healthCheck: 'http://localhost:4444',
@@ -135,6 +140,7 @@ exports.config = {
 			shmSize: '2g'
 		}
 	},
+	*/
 	// Framework you want to run your specs with.
 	// The following are supported: Mocha, Jasmine, and Cucumber
 	// see also: https://webdriver.io/docs/frameworks
@@ -252,9 +258,23 @@ exports.config = {
 	/**
 	 * Function to be executed after a test (in Mocha/Jasmine).
 	 */
+	/*
 	afterTest: function (test, context, { error, result, duration, passed, retries }) {
 		if (!passed) {
 			browser.takeScreenshot();
+		}
+	},
+	*/
+
+	afterTest: function (test, context, { error, result, duration, passed, retries }) {
+		if (error) {
+			const testFileName = error.stack.split("UserContext")[1].split("specs/")[1].split(".")[0];
+
+			const screenshotsDir = path.join(__dirname, "./errorScreenshots");
+			if (!fs.existsSync(screenshotsDir)) {
+				fs.mkdirSync(screenshotsDir);
+			}
+			browser.saveScreenshot("./errorScreenshots/error_" + testFileName + ".png");
 		}
 	},
 

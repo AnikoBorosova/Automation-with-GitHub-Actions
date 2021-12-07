@@ -16,7 +16,7 @@ class LoginPage extends Page {
 		this.userNameInput.click();		// workaround for a bug experienced on Firefox Nightly
 		this.userNameInput.setValue(userName);
 		this.passowrdInput.setValue(password);
-		this.loginBtn.click();
+		//this.loginBtn.click();
 	}
 
 	validateCartElemIsDisplayed() {
