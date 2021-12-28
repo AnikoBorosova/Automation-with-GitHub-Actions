@@ -16,8 +16,18 @@ jobs:
         run: npm install
       - name: Test
         run: npm run testLocal
-      - name: Upload Logs
-        uses: actions/upload-artifact@v2
+
+      - name: run docker image for allure-report
+        run: docker build . -t allure-gen & docker run -v ${PWD}:/github/workspace allure-gen allure-results allure-report
+      - name: Create Allure report
+        uses: esemi/action-allure-report@v0.2.0
+        if: always()      
         with:
-          name: logs
-          path: allure-results/
+          allure-results: allure-results
+          keep_reports: 20
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
