@@ -6,7 +6,9 @@ exports.config = {
 		capabilities: [{
 			maxInstances: 3,
 			browserName: 'firefox',
+			version: 'latest',
 			"moz:firefoxOptions": {
+				binary: '/path/to/firefox',
 				args: [
 					"--headless",
 					"--width=1920",
