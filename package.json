@@ -8,7 +8,8 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"testLocal": "node prepareConfig && ./node_modules/.bin/wdio ./wdio-local.conf.js"
+		"testLocal": "node prepareConfig && ./node_modules/.bin/wdio ./wdio-local.conf.js",
+		"testRemote": "node prepareConfig && ./node_modules/.bin/wdio ./wdio-remote.conf.js"
 	},
 	"repository": {
 		"type": "git",
